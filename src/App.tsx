@@ -2,33 +2,31 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import AppBarMenu from './components/navbar'
+import { Route, Routes } from 'react-router-dom'
+import MainLayout from './components/mainLayout'
+import ListDownloads from './components/listDownloads'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <>
+      <header>
+        <AppBarMenu />
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<MainLayout />} />
+          <Route path="/Costumes" element={<ListDownloads jsonName="pruebas" />} />
+          <Route path="/Props" element={<ListDownloads jsonName="pruebas" />} />
+          <Route path="/Sets" element={<ListDownloads jsonName="pruebas" />} />
+          <Route path="/Escenas" element={<ListDownloads jsonName="pruebas" />} />
+          <Route path="/Herramientas" element={<ListDownloads jsonName="herramientas" />} />
+
+        </Routes>
+      </main>
+    </>
   )
 }
 
